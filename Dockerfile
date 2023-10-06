@@ -4,10 +4,11 @@ FROM node:18
 # Set a working directory
 WORKDIR /app
 
-# Copy your application files into the container
+# Your application setup and commands go here
 COPY . /app
 
-# Install Puppeteer and its dependencies (if listed in package.json)
+
+# Install Puppeteer and its dependencies
 RUN apt-get update \
     && apt-get install -y \
         gconf-service \
@@ -47,10 +48,8 @@ RUN apt-get update \
         libnss3 \
         lsb-release \
         xdg-utils \
-
-# Install npm dependencies (including puppeteer)
+    && npm install puppeteer
+# Install npm dependencies
 RUN npm install
-
 # Specify the command to run your application when the container starts
 CMD ["node", "server.js"]
-

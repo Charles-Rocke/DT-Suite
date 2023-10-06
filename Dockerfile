@@ -47,6 +47,7 @@ RUN apt-get update \
     && npm install puppeteer
 
 # Your application setup and commands go here
+COPY . /app
 
 # Specify the command to run your application when the container starts
 CMD ["node", "server.js"]

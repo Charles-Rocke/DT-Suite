@@ -24,7 +24,9 @@ app.post("/convert", async (req, res) => {
 
     // Launch Puppeteer
     // Configure Puppeteer to use the installed Chrome binary
-    const browser = await puppeteer.launch();
+    const browser = await puppeteer.launch({
+      args: ["--no-sandbox"], // Add this line
+    });
     const page = await browser.newPage();
 
     // Load the locally hosted HTML file

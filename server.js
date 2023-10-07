@@ -73,6 +73,9 @@ app.post("/convert", async (req, res) => {
   }
 });
 
+// Serve static files from a directory (e.g., 'public')
+app.use(express.static("public"));
+
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });

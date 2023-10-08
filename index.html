@@ -1082,7 +1082,7 @@
     </div> -->
     <!-- Convert button -->
     <button type="button" class="btn btn-success" id="convertButton">
-      Convert
+      Convert to JPG
     </button>
 
     <div id="imageContainer"></div>
@@ -1131,10 +1131,10 @@
               const downloadButton = document.createElement("a");
 
               // Add Bootstrap classes for a black button
-              downloadButton.classList.add("btn", "btn-dark");
+              downloadButton.classList.add("btn", "btn-dark m-3");
 
               // Set button text
-              downloadButton.textContent = "Download Image";
+              downloadButton.textContent = "Download JPG";
 
               // Set the download attribute and href for the download link
               downloadButton.href = imagePath;
@@ -1144,7 +1144,7 @@
               const refreshButton = document.createElement("button");
 
               // Add Bootstrap classes for a button
-              refreshButton.classList.add("btn", "btn-primary");
+              refreshButton.classList.add("btn", "btn-primary m-3");
 
               // Set button text
               refreshButton.textContent = "Refresh Page";

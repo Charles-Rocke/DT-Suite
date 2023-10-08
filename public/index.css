@@ -6,5 +6,9 @@ hr {
   width: 40%;
 }
 
+button {
+  /* I'd like the css to be a black bootstrap button */
+}
+
 #score-description {
 }

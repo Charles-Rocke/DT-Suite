@@ -7,7 +7,6 @@ WORKDIR /app
 # Your application setup and commands go here
 COPY . /app
 
-
 # Install Puppeteer and its dependencies
 RUN apt-get update \
     && apt-get install -y \
@@ -52,4 +51,4 @@ RUN apt-get update \
 # Install npm dependencies
 RUN npm install
 # Specify the command to run your application when the container starts
-CMD ["node", "server.js"]
+CMD ["nodemon", "server.js"]

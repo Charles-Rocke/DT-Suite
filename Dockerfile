@@ -50,5 +50,8 @@ RUN apt-get update \
     && npm install puppeteer
 # Install npm dependencies
 RUN npm install
+
+# Install nodemon globally
+RUN npm install -g nodemon
 # Specify the command to run your application when the container starts
 CMD ["nodemon", "server.js"]

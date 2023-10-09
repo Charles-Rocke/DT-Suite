@@ -1197,9 +1197,7 @@
               // Ensure that both first and last names are provided
               if (firstName && lastName) {
                 // Create the camel-cased image path with an underscore separator
-                const imagePath = `${firstName}${lastName
-                  .charAt(0)
-                  .toUpperCase()}${lastName.slice(1)}.jpg`;
+                const imagePath = firstName + lastName + ".jpg";
 
                 // Now, imagePath will be something like "JohnDoe.jpg"
                 console.log("Image Path:", imagePath);

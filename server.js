@@ -61,7 +61,7 @@ app.post("/convert", async (req, res) => {
     // Construct the filename using the first name, last name, and ".jpg" extension
     const fileName =
       inputFieldValues.driverFirstName +
-      inputFieldValues.driverLastName.toUpperCase() +
+      inputFieldValues.driverLastName +
       ".jpg";
 
     console.log(fileName);

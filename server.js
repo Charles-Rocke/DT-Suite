@@ -18,6 +18,7 @@ app.post("/convert", async (req, res) => {
     console.log("Convert request received");
 
     // Get the checkbox states from the request
+    console.log(req.body);
     const { inputFieldValues } = req.body;
     console.log(inputFieldValues);
 

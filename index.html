@@ -13,7 +13,6 @@
     <link rel="stylesheet" type="text/css" href="index.css" />
   </head>
   <body>
-    HELLO WORLD
     <!-- CDV Road Test Evaluation Description Component -->
     <div class="container">
       <center><h1>CDV Road Test Evaluation</h1></center>
@@ -937,7 +936,17 @@
         <h2>Certificate of Driver's Road Test</h2>
         <p class="muted">
           This is to certify that the below named driver was given a Road Test
-          under my supervision on {{ Date }}, consisiting of
+          under my supervision on
+          <span style="display: inline-block; width: 20%">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Enter Date MM/DD/YY"
+              aria-label="Enter Date"
+              aria-describedby="basic-addon1"
+              id="date1"
+            /> </span
+          >, consisiting of
           <a href="#" data-bs-toggle="tooltip" data-bs-title="10">10</a>
           miles of driving. It is my considered opinion that this Driver possess
           sufficient driving skill to safely operate the type of custom delivery
@@ -955,6 +964,7 @@
           placeholder="Enter name"
           aria-label="Name"
           aria-describedby="basic-addon1"
+          id="driverName"
         />
       </div>
       <div class="input-group mb-3">
@@ -967,6 +977,7 @@
           placeholder="Enter signature"
           aria-label="Signature"
           aria-describedby="basic-addon1"
+          id="driverLicenseNumber"
         />
       </div>
       <div class="input-group mb-3">
@@ -979,6 +990,7 @@
           placeholder="ex. Maryland"
           aria-label="License State"
           aria-describedby="basic-addon1"
+          id="driverLicenseState"
         />
       </div>
       <!-- Trainers Data Component -->
@@ -992,6 +1004,7 @@
           placeholder="Enter name"
           aria-label="Name"
           aria-describedby="basic-addon1"
+          id="driverTrainerName"
         />
       </div>
       <div class="input-group mb-3">
@@ -1004,6 +1017,7 @@
           placeholder="Enter signature"
           aria-label="Signature"
           aria-describedby="basic-addon1"
+          id="driverTrainerSignature"
         />
       </div>
       <div class="input-group mb-3">
@@ -1014,6 +1028,7 @@
           placeholder="Enter Candidates employee ID"
           aria-label="Candidates ID"
           aria-describedby="basic-addon1"
+          id="candidateId"
         />
       </div>
       <div class="input-group mb-3">
@@ -1026,6 +1041,7 @@
           placeholder="MM/DD/YYYY "
           aria-label="Date"
           aria-describedby="basic-addon1"
+          id="date2"
         />
       </div>
       <div class="input-group mb-3">
@@ -1108,13 +1124,31 @@
           try {
             console.log("Convert clicked");
 
+            // Create an object to store input field values
+            const inputFieldValues = {
+              date1: document.getElementById("date1").value,
+              driverName: document.getElementById("driverName").value,
+              driverLicenseNumber: document.getElementById(
+                "driverLicenseNumber"
+              ).value,
+              driverLicenseState:
+                document.getElementById("driverLicenseState").value,
+              driverTrainerName:
+                document.getElementById("driverTrainerName").value,
+              driverTrainerSignature: document.getElementById(
+                "driverTrainerSignature"
+              ).value,
+              candidateId: document.getElementById("candidateId").value,
+              date2: document.getElementById("date2").value,
+            };
+
             // Send the checkbox states to the server
             const response = await fetch("/convert", {
               method: "POST",
               headers: {
                 "Content-Type": "application/json",
               },
-              body: JSON.stringify({ checkbox2: true }),
+              body: JSON.stringify({ inputFieldValues }),
             });
 
             if (response.ok) {

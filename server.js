@@ -18,8 +18,8 @@ app.post("/convert", async (req, res) => {
     console.log("Convert request received");
 
     // Get the checkbox states from the request
-    const { checkboxStates } = req.body;
-    console.log(checkboxStates);
+    const { inputFieldValues } = req.body;
+    console.log(inputFieldValues);
 
     // Launch Puppeteer
     // Configure Puppeteer to use the installed Chrome binary
@@ -33,19 +33,19 @@ app.post("/convert", async (req, res) => {
       waitUntil: "networkidle2",
     });
 
-    // Update checkbox states based on the request data
-    for (const checkboxId in checkboxStates) {
-      if (checkboxStates.hasOwnProperty(checkboxId)) {
-        const isChecked = checkboxStates[checkboxId];
+    // Update input field values based on the request data
+    for (const inputFieldId in inputFieldValues) {
+      if (inputFieldValues.hasOwnProperty(inputFieldId)) {
+        const inputValue = inputFieldValues[inputFieldId];
         await page.evaluate(
-          (id, checked) => {
-            const checkbox = document.getElementById(id);
-            if (checkbox) {
-              checkbox.checked = checked;
+          (id, value) => {
+            const inputField = document.getElementById(id);
+            if (inputField) {
+              inputField.value = value;
             }
           },
-          checkboxId,
-          isChecked
+          inputFieldId,
+          inputValue
         );
       }
     }

@@ -6,8 +6,23 @@ hr {
   width: 40%;
 }
 
-button {
-  /* I'd like the css to be a black bootstrap button */
+/* CSS for the overlay */
+.overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7); /* Faded background color */
+  justify-content: center;
+  align-items: center;
+  z-index: 9999; /* Ensure it's above other elements */
+}
+
+/* CSS for centering the spinner */
+.overlay .spinner-border {
+  color: white; /* Change the spinner color if needed */
 }
 
 #score-description {

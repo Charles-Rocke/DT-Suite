@@ -49,6 +49,24 @@
         demonstrated is an automatic fail.
       </p>
     </div>
+    <center><hr style="width: 90%" /></center>
+    <div class="container">
+      <label for="exampleFormControlInput1" class="form-label"
+        >I. Pre-Trip Inspection</label
+      >
+      <!-- Benchmark Component -->
+      <div class="row g-3 align-items-center">
+        <div class="m-3 col-auto">
+          <select class="form-select" aria-label="Default select example">
+            <option selected>X</option>
+            <option value="0">0</option>
+          </select>
+        </div>
+        <div class="mb-3 col-auto text-center">
+          <span> Checks all items included in the DVIC Checklist</span>
+        </div>
+      </div>
+    </div>
     <div class="container">
       <label for="exampleFormControlInput1" class="form-label"
         >II. Straight Line Backing/ Backing in parking spot</label
@@ -928,180 +946,193 @@
     </div>
 
     <!-- end Notes Component -->
+    <!--loading overlay -->
+    <div id="loadingOverlay" class="overlay">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+    <center><hr style="width: 90%" /></center>
     <!-- Certificate of Driver's Road Test -->
-
-    <!-- Certificate of Drivers Road Test meta data -->
-    <div class="container" id="certificate">
+    <form id="conversionForm">
+      <!-- Certificate of Drivers Road Test meta data -->
+      <div class="container" id="certificate">
+        <center>
+          <h2 class="mt-3">Certificate of Driver's Road Test</h2>
+          <p class="muted">
+            This is to certify that the below named driver was given a Road Test
+            under my supervision on
+            <span style="display: inline-block; width: 20%">
+              <input
+                type="date"
+                class="form-control"
+                placeholder="MM/DD/YY"
+                aria-label="Enter Date"
+                aria-describedby="basic-addon1"
+                id="date1"
+                required /></span
+            >, consisting of
+            <a href="#" data-bs-toggle="tooltip" data-bs-title="10">10</a>
+            miles of driving. It is my considered opinion that this Driver
+            possesses sufficient driving skill to safely operate the type of
+            custom delivery vehicle listed above.
+          </p>
+        </center>
+      </div>
+      <!-- Driver and Date info Component -->
+      <div class="container">
+        <div class="input-group mb-3">
+          <span class="input-group-text" id="basic-addon1"
+            >Driver First name</span
+          >
+          <input
+            type="text"
+            aria-label="First name"
+            class="form-control"
+            id="driverFirstName"
+            placeholder="Enter driver first name"
+          />
+          <span class="input-group-text" id="basic-addon1"
+            >Driver Last name</span
+          >
+          <input
+            type="text"
+            aria-label="Last name"
+            class="form-control"
+            id="driverLastName"
+            placeholder="Enter driver last name"
+          />
+        </div>
+        <div class="input-group mb-3">
+          <span class="input-group-text" id="basic-addon1"
+            >Driver's License Number:</span
+          >
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Enter License Number"
+            aria-label="Signature"
+            aria-describedby="basic-addon1"
+            id="driverLicenseNumber"
+            required
+          />
+        </div>
+        <div class="input-group mb-3">
+          <span class="input-group-text" id="basic-addon1"
+            >Driver License State:</span
+          >
+          <input
+            type="text"
+            class="form-control"
+            placeholder="ex. Maryland"
+            aria-label="License State"
+            aria-describedby="basic-addon1"
+            id="driverLicenseState"
+            required
+          />
+        </div>
+        <!-- Trainers Data Component -->
+        <div class="input-group mb-3">
+          <span class="input-group-text" id="basic-addon1"
+            >Trainer/Examiner's Name:</span
+          >
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Enter trainers name"
+            aria-label="Name"
+            aria-describedby="basic-addon1"
+            id="driverTrainerName"
+            required
+          />
+        </div>
+        <div class="input-group mb-3">
+          <span class="input-group-text" id="basic-addon1"
+            >Trainer/Examiner's Signature:</span
+          >
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Enter trainers signature"
+            aria-label="Signature"
+            aria-describedby="basic-addon1"
+            id="driverTrainerSignature"
+            required
+          />
+        </div>
+        <div class="input-group mb-3">
+          <span class="input-group-text" id="basic-addon1">Candidates ID:</span>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Enter Candidates employee ID"
+            aria-label="Candidates ID"
+            aria-describedby="basic-addon1"
+            id="candidateId"
+            required
+          />
+        </div>
+        <div class="input-group mb-3">
+          <span class="input-group-text" id="basic-addon1"
+            >Date of Road Test Exam:</span
+          >
+          <input
+            type="date"
+            class="form-control"
+            placeholder="MM/DD/YYYY"
+            aria-label="Date"
+            aria-describedby="basic-addon1"
+            id="date2"
+            required
+          />
+        </div>
+        <div class="input-group mb-3">
+          <span class="input-group-text" id="basic-addon1"
+            >Type of power unit(Vehicle type):</span
+          >
+          <input
+            type="text"
+            class="form-control"
+            readonly
+            value="CDV"
+            aria-label="Date"
+            aria-describedby="basic-addon1"
+          />
+        </div>
+        <div class="input-group mb-3">
+          <span class="input-group-text" id="basic-addon1"
+            >Amazon Logistics - Building Address:</span
+          >
+          <input
+            type="text"
+            class="form-control"
+            readonly
+            value="7226 Preston Gateway DR 21076"
+            aria-label="Date"
+            aria-describedby="basic-addon1"
+          />
+        </div>
+        <div class="input-group mb-3">
+          <span class="input-group-text" id="basic-addon1">Facility:</span>
+          <input
+            type="text"
+            class="form-control"
+            readonly
+            value="DMD6"
+            aria-label="Facility"
+            aria-describedby="basic-addon1"
+          />
+        </div>
+      </div>
+      <!-- Convert button -->
       <center>
-        <h2>Certificate of Driver's Road Test</h2>
-        <p class="muted">
-          This is to certify that the below named driver was given a Road Test
-          under my supervision on
-          <span style="display: inline-block; width: 20%">
-            <input
-              type="text"
-              class="form-control"
-              placeholder="Enter Date MM/DD/YY"
-              aria-label="Enter Date"
-              aria-describedby="basic-addon1"
-              id="date1"
-            /> </span
-          >, consisiting of
-          <a href="#" data-bs-toggle="tooltip" data-bs-title="10">10</a>
-          miles of driving. It is my considered opinion that this Driver possess
-          sufficient driving skill to safely operate the type of custom delivery
-          vehicle listed above.
-        </p>
+        <button
+          type="submit"
+          class="btn btn-success btn-lg m-3"
+          id="convertButton"
+        >
+          Convert to JPG
+        </button>
       </center>
-    </div>
-    <!-- Driver and Date info Component -->
-    <div class="container">
-      <div class="input-group mb-3">
-        <span class="input-group-text" id="basic-addon1">Drivers Name:</span>
-        <input
-          type="text"
-          class="form-control"
-          placeholder="Enter name"
-          aria-label="Name"
-          aria-describedby="basic-addon1"
-          id="driverName"
-        />
-      </div>
-      <div class="input-group mb-3">
-        <span class="input-group-text" id="basic-addon1"
-          >Driver's License Number:</span
-        >
-        <input
-          type="text"
-          class="form-control"
-          placeholder="Enter signature"
-          aria-label="Signature"
-          aria-describedby="basic-addon1"
-          id="driverLicenseNumber"
-        />
-      </div>
-      <div class="input-group mb-3">
-        <span class="input-group-text" id="basic-addon1"
-          >Driver License State:</span
-        >
-        <input
-          type="text"
-          class="form-control"
-          placeholder="ex. Maryland"
-          aria-label="License State"
-          aria-describedby="basic-addon1"
-          id="driverLicenseState"
-        />
-      </div>
-      <!-- Trainers Data Component -->
-      <div class="input-group mb-3">
-        <span class="input-group-text" id="basic-addon1"
-          >Trainer/Examiner's Name:</span
-        >
-        <input
-          type="text"
-          class="form-control"
-          placeholder="Enter name"
-          aria-label="Name"
-          aria-describedby="basic-addon1"
-          id="driverTrainerName"
-        />
-      </div>
-      <div class="input-group mb-3">
-        <span class="input-group-text" id="basic-addon1"
-          >Trainer/Examiner's Signature:</span
-        >
-        <input
-          type="text"
-          class="form-control"
-          placeholder="Enter signature"
-          aria-label="Signature"
-          aria-describedby="basic-addon1"
-          id="driverTrainerSignature"
-        />
-      </div>
-      <div class="input-group mb-3">
-        <span class="input-group-text" id="basic-addon1">Candidates ID:</span>
-        <input
-          type="text"
-          class="form-control"
-          placeholder="Enter Candidates employee ID"
-          aria-label="Candidates ID"
-          aria-describedby="basic-addon1"
-          id="candidateId"
-        />
-      </div>
-      <div class="input-group mb-3">
-        <span class="input-group-text" id="basic-addon1"
-          >Date of Road Test Exam:</span
-        >
-        <input
-          type="text"
-          class="form-control"
-          placeholder="MM/DD/YYYY "
-          aria-label="Date"
-          aria-describedby="basic-addon1"
-          id="date2"
-        />
-      </div>
-      <div class="input-group mb-3">
-        <span class="input-group-text" id="basic-addon1"
-          >Type of power unit(Vehicle type):</span
-        >
-        <input
-          type="text"
-          class="form-control"
-          readonly
-          value="CDV"
-          aria-label="Date"
-          aria-describedby="basic-addon1"
-        />
-      </div>
-      <div class="input-group mb-3">
-        <span class="input-group-text" id="basic-addon1"
-          >Amazon Logistics - Building Address:</span
-        >
-        <input
-          type="text"
-          class="form-control"
-          readonly
-          value="7226 Preston Gateway DR 21076"
-          aria-label="Date"
-          aria-describedby="basic-addon1"
-        />
-      </div>
-      <div class="input-group mb-3">
-        <span class="input-group-text" id="basic-addon1">Facility:</span>
-        <input
-          type="text"
-          class="form-control"
-          readonly
-          value="DMD6"
-          aria-label="Facility"
-          aria-describedby="basic-addon1"
-        />
-      </div>
-    </div>
-    <!-- Candidate Info Component -->
-    <!-- end Driver and Date info Component -->
-
-    <!-- <div class="form-check">
-      <input class="form-check-input" type="checkbox" value="" id="checkbox1" />
-      <label class="form-check-label" for="checkbox1">Checkbox 1</label>
-    </div>
-    <div class="form-check">
-      <input class="form-check-input" type="checkbox" value="" id="checkbox2" />
-      <label class="form-check-label" for="checkbox2">Checkbox 2</label>
-    </div>
-    <div class="form-check">
-      <input class="form-check-input" type="checkbox" value="" id="checkbox3" />
-      <label class="form-check-label" for="checkbox3">Checkbox 3</label>
-    </div> -->
-    <!-- Convert button -->
-    <button type="button" class="btn btn-success" id="convertButton">
-      Convert to JPG
-    </button>
-
+    </form>
     <div id="imageContainer"></div>
     <!-- JavaScript to scroll to the "certificate" element on page load -->
     <script>
@@ -1119,15 +1150,19 @@
 
     <script>
       document
-        .getElementById("convertButton")
-        .addEventListener("click", async () => {
+        .getElementById("conversionForm")
+        .addEventListener("submit", async (e) => {
+          e.preventDefault(); // Prevent the default form submission behavior
           try {
+            // Show the loading overlay when the conversion starts
+            document.getElementById("loadingOverlay").style.display = "flex"; // Display the overlay
             console.log("Convert clicked");
 
             // Create an object to store input field values
             const inputFieldValues = {
               date1: document.getElementById("date1").value,
-              driverName: document.getElementById("driverName").value,
+              driverFirstName: document.getElementById("driverFirstName").value,
+              driverLastName: document.getElementById("driverLastName").value,
               driverLicenseNumber: document.getElementById(
                 "driverLicenseNumber"
               ).value,
@@ -1155,53 +1190,93 @@
               console.log("Webpage converted to JPG");
 
               // Assuming the server saves the image as 'webpage.jpg'
-              const imagePath = "page.jpg";
-              const originalFileName = "page.jpg"; // Change this to the desired file name
+              const firstName =
+                document.getElementById("driverFirstName").value;
+              const lastName = document.getElementById("driverLastName").value;
 
-              // Display the image in the 'imageContainer' div
-              const imageContainer = document.getElementById("imageContainer");
-              imageContainer.innerHTML = `<img src="${imagePath}" alt="Converted Image" />`;
+              // Ensure that both first and last names are provided
+              if (firstName && lastName) {
+                // Create the camel-cased image path with an underscore separator
+                const imagePath = `${firstName}${lastName
+                  .charAt(0)
+                  .toUpperCase()}${lastName.slice(1)}.jpg`;
 
-              // Create a button element for download
-              const downloadButton = document.createElement("a");
+                // Now, imagePath will be something like "JohnDoe.jpg"
+                console.log("Image Path:", imagePath);
 
-              // Add Bootstrap classes for a black button
-              downloadButton.classList.add("btn", "btn-dark");
+                const originalFileName = imagePath; // Change this to the desired file name
 
-              // Set button text
-              downloadButton.textContent = "Download JPG";
+                // Display the image in the 'imageContainer' div
+                const imageContainer =
+                  document.getElementById("imageContainer");
+                imageContainer.style.backgroundColor = "black";
+                // Center the image and add padding
+                imageContainer.style.display = "flex";
+                imageContainer.style.alignItems = "center";
+                imageContainer.style.justifyContent = "center";
+                imageContainer.style.padding = "20px"; // Adjust the padding as needed
+                imageContainer.innerHTML = `<img src="${imagePath}" alt="Converted Image" />`;
 
-              // Set the download attribute and href for the download link
-              downloadButton.href = imagePath;
-              downloadButton.download = originalFileName;
+                // Create a download link for the image
+                const downloadLink = document.createElement("a");
 
-              // Create a button element for refreshing the page
-              const refreshButton = document.createElement("button");
+                // Set the download link attributes
+                downloadLink.href = imagePath;
+                downloadLink.download = originalFileName;
 
-              // Add Bootstrap classes for a button
-              refreshButton.classList.add("btn", "btn-primary");
+                // Create a button element for downloading
+                const downloadButton = document.createElement("button");
+                downloadButton.classList.add("btn", "btn-primary", "btn-lg");
+                downloadButton.textContent = "Download JPG";
 
-              // Set button text
-              refreshButton.textContent = "Refresh Page";
+                // Add an event listener to the download button
+                downloadButton.addEventListener("click", function () {
+                  // Create an anchor element to trigger the download
+                  const downloadLink = document.createElement("a");
+                  downloadLink.href = imagePath;
+                  downloadLink.download = originalFileName;
 
-              // Add a click event listener to refresh the page when the button is clicked
-              refreshButton.addEventListener("click", function () {
-                location.reload();
-              });
+                  // Simulate a click on the anchor element
+                  downloadLink.click();
+                });
+                // Apply styles to center and add margins
+                downloadButton.style.display = "block"; // Make the button a block-level element
+                downloadButton.style.margin = "20px auto"; // Center the button horizontally and add margins on top and bottom
 
-              // Append both buttons to the 'imageContainer' div
-              document.body.appendChild(downloadButton);
-              document.body.appendChild(refreshButton);
+                // Create a button element for refreshing the page
+                const refreshButton = document.createElement("button");
+                refreshButton.classList.add("btn", "btn-secondary", "btn-lg");
+                refreshButton.textContent = "Refresh Page";
+                // Apply styles to center and add margins
+                refreshButton.style.display = "block"; // Make the button a block-level element
+                refreshButton.style.margin = "20px auto";
 
-              // Scroll to the very bottom of the page after a slight delay
-              setTimeout(function () {
-                window.scrollTo(0, document.body.scrollHeight);
-              }, 100); // Adjust the delay as needed
+                // Add a click event listener to refresh the page when the button is clicked
+                refreshButton.addEventListener("click", function () {
+                  location.reload();
+                });
+
+                // Append both buttons to the 'imageContainer' div
+                document.body.appendChild(downloadButton);
+                document.body.appendChild(refreshButton);
+
+                // Scroll to the very bottom of the page after a slight delay
+                setTimeout(function () {
+                  window.scrollTo(0, document.body.scrollHeight);
+                }, 100); // Adjust the delay as needed
+                // Hide the loading overlay when the conversion is complete
+                document.getElementById("loadingOverlay").style.display =
+                  "none"; // Hide the overlay
+              } else {
+                console.error("First and last names are required.");
+              }
             } else {
               console.error("Error:", response.statusText);
             }
           } catch (err) {
             console.error("Error:", err);
+            // Hide the loading overlay in case of an error
+            document.getElementById("loadingOverlay").style.display = "none"; // Hide the overlay
           }
         });
     </script>

@@ -58,8 +58,17 @@ app.post("/convert", async (req, res) => {
       fullPage: true,
     });
 
-    // Save the screenshot as a JPG file in the public directory
-    const screenshotPath = path.join(__dirname, "public", "page.jpg");
+    // Construct the filename using the first name, last name, and ".jpg" extension
+    const fileName =
+      inputFieldValues.driverFirstName +
+      inputFieldValues.driverLastName.toUpperCase() +
+      ".jpg";
+
+    console.log(fileName);
+    // Define the path where you want to save the screenshot
+    const screenshotPath = path.join(__dirname, "public", fileName);
+
+    // Save the screenshot using the constructed filename
     fs.writeFileSync(screenshotPath, screenshot);
 
     // Close the browser

@@ -1,5 +1,5 @@
 import { createClient } from "@supabase/supabase-js";
-import { createStorage } from "@supabase/storage";
+import { createStorage } from "@supabase/storage-js";
 
 // Supabase config
 const supabaseUrl = "https://enssmnohepficaxcmyjb.supabase.co";

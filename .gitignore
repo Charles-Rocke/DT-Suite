@@ -38,3 +38,6 @@ typings/
 
 # Optional npm package files
 npm-debug.log
+
+# env
+.env

@@ -1,3 +1,13 @@
+import { createClient } from "@supabase/supabase-js";
+import { createStorage } from "@supabase/storage";
+
+// Supabase config
+const supabaseUrl = "https://enssmnohepficaxcmyjb.supabase.co";
+const supabaseKey = process.env.SUPABASE_KEY;
+const supabase = createClient(supabaseUrl, supabaseKey);
+const supabaseStorage = createStorage(supabase);
+
+// App config
 const express = require("express");
 const path = require("path");
 const puppeteer = require("puppeteer"); // Use puppeteer-core
@@ -65,17 +75,31 @@ app.post("/convert", async (req, res) => {
       ".jpg";
 
     console.log(fileName);
+
     // Define the path where you want to save the screenshot
     const screenshotPath = path.join(__dirname, "public", fileName);
 
     // Save the screenshot using the constructed filename
     fs.writeFileSync(screenshotPath, screenshot);
 
+    // Upload the screenshot to Supabase Storage
+    const { data, error } = await supabaseStorage
+      .from("CDV Upload Images") // Your bucket name
+      .upload(fileName, screenshot, {
+        cacheControl: "3600", // Cache for an hour
+        upsert: false, // Do not overwrite the file if it already exists
+      });
+
+    if (error) {
+      console.error("Error uploading to Supabase Storage:", error);
+      res.status(500).send("Internal Server Error");
+    } else {
+      console.log("Webpage converted to JPG and uploaded to Supabase");
+      res.status(200).send("Webpage converted to JPG and uploaded to Supabase");
+    }
+
     // Close the browser
     await browser.close();
-
-    console.log("Webpage converted to JPG");
-    res.status(200).send("Webpage converted to JPG");
   } catch (err) {
     console.error("Error:", err);
     res.status(500).send("Internal Server Error");

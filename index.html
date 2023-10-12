@@ -1134,7 +1134,7 @@
       </center>
     </form>
     <div id="imageContainer"></div>
-    <script type="text/javascript" src="supa.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <!-- JavaScript to scroll to the "certificate" element on page load -->
     <script>
       window.onload = function () {
@@ -1150,6 +1150,19 @@
     </script>
 
     <script>
+      // Create Supabase client
+
+      // Upload file using standard upload
+      async function uploadFile(file) {
+        const { data, error } = await supabase.storage
+          .from("bucket_name")
+          .upload("file_path", file);
+        if (error) {
+          // Handle error
+        } else {
+          // Handle success
+        }
+      }
       document
         .getElementById("conversionForm")
         .addEventListener("submit", async (e) => {
@@ -1227,9 +1240,10 @@
                 const downloadButton = document.createElement("button");
                 downloadButton.classList.add("btn", "btn-primary", "btn-lg");
                 downloadButton.textContent = "Download JPG";
-
+                
                 // Add an event listener to the download button
                 downloadButton.addEventListener("click", async function () {
+                  
                   // Upload the image to Supabase Storage using the function from your supa.js script
                   await uploadFile(imagePath);
                   // Create an anchor element to trigger the download

@@ -7,7 +7,34 @@ const fs = require("fs");
 const app = express();
 const port = process.env.PORT || 3000;
 
-app.use(express.static(path.join(__dirname, "public")));
+app.use(
+  express.static(path.join(__dirname, "public"), {
+    setHeaders: (res, path) => {
+      if (path.endsWith(".js")) {
+        res.setHeader(
+          "Content-Type",
+          path.endsWith(".mjs") ? "module/javascript" : "text/javascript"
+        );
+      }
+    },
+  })
+);
+
+app.use(
+  express.static(__dirname, {
+    setHeaders: (res, path) => {
+      if (path.endsWith(".js")) {
+        res.setHeader(
+          "Content-Type",
+          path.endsWith(".mjs") ? "module/javascript" : "text/javascript"
+        );
+      }
+    },
+  })
+);
+
+app.use("/node_modules", express.static(path.join(__dirname, "node_modules")));
+
 app.use(express.json()); // Parse JSON request body
 
 app.get("/", (req, res) => {
@@ -72,6 +99,7 @@ app.post("/convert", async (req, res) => {
 
     // Save the screenshot using the constructed filename
     fs.writeFileSync(screenshotPath, screenshot);
+    // Upload the image to Supabase Storage using the function from your supa.js script
 
     console.log("Webpage converted to JPG");
     res.status(200).send("Webpage converted to JPG");

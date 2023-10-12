@@ -1,3 +1,4 @@
+// supa.js
 import { createClient } from "@supabase/supabase-js";
 
 // Create Supabase client
@@ -16,3 +17,5 @@ async function uploadFile(file) {
     // Handle success
   }
 }
+
+export { uploadFile };

@@ -1150,19 +1150,7 @@
     </script>
 
     <script>
-      // Create Supabase client
-
-      // Upload file using standard upload
-      async function uploadFile(file) {
-        const { data, error } = await supabase.storage
-          .from("bucket_name")
-          .upload("file_path", file);
-        if (error) {
-          // Handle error
-        } else {
-          // Handle success
-        }
-      }
+      
       document
         .getElementById("conversionForm")
         .addEventListener("submit", async (e) => {
@@ -1244,8 +1232,7 @@
                 // Add an event listener to the download button
                 downloadButton.addEventListener("click", async function () {
                   
-                  // Upload the image to Supabase Storage using the function from your supa.js script
-                  await uploadFile(imagePath);
+                  
                   // Create an anchor element to trigger the download
                   const downloadLink = document.createElement("a");
                   downloadLink.href = imagePath;

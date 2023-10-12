@@ -1228,7 +1228,9 @@
                 downloadButton.textContent = "Download JPG";
 
                 // Add an event listener to the download button
-                downloadButton.addEventListener("click", function () {
+                downloadButton.addEventListener("click", async function () {
+                  // Upload the image to Supabase Storage using the function from your supa.js script
+                  await uploadFile(imagePath);
                   // Create an anchor element to trigger the download
                   const downloadLink = document.createElement("a");
                   downloadLink.href = imagePath;

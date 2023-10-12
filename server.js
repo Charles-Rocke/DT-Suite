@@ -1,12 +1,3 @@
-import { createClient } from "@supabase/supabase-js";
-import { createStorage } from "@supabase/storage-js";
-
-// Supabase config
-const supabaseUrl = "https://enssmnohepficaxcmyjb.supabase.co";
-const supabaseKey = process.env.SUPABASE_KEY;
-const supabase = createClient(supabaseUrl, supabaseKey);
-const supabaseStorage = createStorage(supabase);
-
 // App config
 const express = require("express");
 const path = require("path");
@@ -82,21 +73,8 @@ app.post("/convert", async (req, res) => {
     // Save the screenshot using the constructed filename
     fs.writeFileSync(screenshotPath, screenshot);
 
-    // Upload the screenshot to Supabase Storage
-    const { data, error } = await supabaseStorage
-      .from("CDV Upload Images") // Your bucket name
-      .upload(fileName, screenshot, {
-        cacheControl: "3600", // Cache for an hour
-        upsert: false, // Do not overwrite the file if it already exists
-      });
-
-    if (error) {
-      console.error("Error uploading to Supabase Storage:", error);
-      res.status(500).send("Internal Server Error");
-    } else {
-      console.log("Webpage converted to JPG and uploaded to Supabase");
-      res.status(200).send("Webpage converted to JPG and uploaded to Supabase");
-    }
+    console.log("Webpage converted to JPG");
+    res.status(200).send("Webpage converted to JPG");
 
     // Close the browser
     await browser.close();

@@ -3,9 +3,24 @@ const express = require("express");
 const path = require("path");
 const puppeteer = require("puppeteer"); // Use puppeteer-core
 const fs = require("fs");
+const fetch = require("node-fetch");
+const cors = require("cors");
+require("dotenv").config();
+
+// Supabase config
+const { createClient } = require("@supabase/supabase-js");
+
+const { createClient: createStorageClient } = require("@supabase/storage-js");
 
 const app = express();
 const port = process.env.PORT || 3000;
+// Initialize Supabase client with your credentials
+
+const supabase = createClient(
+  process.env.SUPABASE_URL,
+  process.env.SUPABASE_KEY
+);
+app.use(cors());
 
 app.use(
   express.static(path.join(__dirname, "public"), {
@@ -106,6 +121,39 @@ app.post("/convert", async (req, res) => {
 
     // Close the browser
     await browser.close();
+  } catch (err) {
+    console.error("Error:", err);
+    res.status(500).send("Internal Server Error");
+  }
+});
+
+app.post("/upload-to-supabase", async (req, res) => {
+  try {
+    // Get the image path and original file name from the request
+    const { imagePath, originalFileName } = req.body;
+
+    // Upload the image to Supabase Storage
+    const formData = new FormData();
+    formData.append("file", fs.createReadStream(imagePath)); // Assuming you want to upload the file
+
+    const response = await fetch(
+      "https://api.supabase.io/storage/v1/b/your_bucket_name/upload",
+      {
+        method: "POST",
+        body: formData,
+        headers: {
+          Authorization: `Bearer ${process.env.SUPABASE_KEY}`,
+        },
+      }
+    );
+
+    if (response.ok) {
+      console.log("Image uploaded to Supabase successfully");
+      res.status(200).send("Image uploaded to Supabase");
+    } else {
+      console.error("Error:", response.statusText);
+      res.status(500).send("Error uploading to Supabase");
+    }
   } catch (err) {
     console.error("Error:", err);
     res.status(500).send("Internal Server Error");

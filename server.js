@@ -3,7 +3,6 @@ const express = require("express");
 const path = require("path");
 const puppeteer = require("puppeteer"); // Use puppeteer-core
 const fs = require("fs");
-const fetch = require("node-fetch");
 const cors = require("cors");
 require("dotenv").config();
 
